@@ -18,5 +18,11 @@
     {% if list_cd %}
         <h2>{{ list_cd }}</h2>
     {% endif %}
+
+    {% if image_url %}
+    <h2>Картинка дня от NASA</h2>
+    <img src="{{ image_url }}" alt="NASA Image" width="600">
+    {% endif %}
+
 </body>
 </html>
