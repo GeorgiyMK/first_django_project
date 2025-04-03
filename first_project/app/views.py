@@ -1,3 +1,6 @@
+import datetime
+import os
+
 from django.http import HttpResponse
 from django.shortcuts import render, reverse
 
@@ -6,10 +9,11 @@ def home_view(request):
     template_name = 'app/home.html'
     # впишите правильные адреса страниц, используя
     # функцию `reverse`
+    # Убрал переход с домашней страницы на домашнюю страницу, вроде не очень логично
     pages = {
-        'Главная страница': reverse('home'),
-        'Показать текущее время': '',
-        'Показать содержимое рабочей директории': ''
+
+        'Показать текущее время': reverse('time'),
+        'Показать содержимое рабочей директории': reverse('workdir')
     }
     
     # context и параметры render менять не нужно
@@ -21,15 +25,41 @@ def home_view(request):
 
 
 def time_view(request):
-    # обратите внимание – здесь HTML шаблона нет, 
-    # возвращается просто текст
-    current_time = None
+    # добавил HTML шаблон,
+    template_name = 'app/home.html'
+
+    # Запрос текущего времени и запись его в переменную msg
+    current_time = datetime.datetime.now().time()
     msg = f'Текущее время: {current_time}'
-    return HttpResponse(msg)
+
+    pages = {
+        'Главная страница': reverse('home'),
+        'Показать содержимое рабочей директории': reverse('workdir')
+    }
+
+    # добавил msg в context для отображения времени
+
+    context = {
+        'pages': pages,
+        'msg': msg
+    }
+
+    return render(request, template_name, context)
+    # return HttpResponse(msg)
 
 
 def workdir_view(request):
-    # по аналогии с `time_view`, напишите код,
-    # который возвращает список файлов в рабочей 
-    # директории
-    raise NotImplemented
+    # Алгоритм действий аналогичный функции time_view
+    template_name = 'app/home.html'
+    list_cd = os.listdir('.')
+    pages = {
+        'Главная страница': reverse('home'),
+        'Показать текущее время': reverse('time')
+    }
+    context = {
+        'pages': pages,
+        'list_cd': list_cd
+    }
+
+    return render(request, template_name, context)
+

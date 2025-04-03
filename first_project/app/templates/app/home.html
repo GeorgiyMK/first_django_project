@@ -10,5 +10,13 @@
         <a href="{{ url }}">{{ title }}</a>
         <br>
     {% endfor %}
+
+    {% if msg %}
+        <h2>{{ msg }}</h2>
+    {% endif %}
+
+    {% if list_cd %}
+        <h2>{{ list_cd }}</h2>
+    {% endif %}
 </body>
 </html>
