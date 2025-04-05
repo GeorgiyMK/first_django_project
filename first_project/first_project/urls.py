@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from app.views import home_view, time_view, workdir_view, nasa_picture
+from bus_stations.views import bus_stations
 from calculator import views
 from calculator.views import cook_calculator
 
@@ -30,4 +31,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('cook_calculator/', cook_calculator, name = 'cook_calculator'),
     path('dish/<str:dish_name>/', views.dish_detail, name='dish_detail'),
+    path('bus_stations/', bus_stations, name='bus_stations'),
 ]

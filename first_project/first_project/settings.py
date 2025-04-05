@@ -40,7 +40,8 @@ INSTALLED_APPS = [
 
     # здесь мы подключаем наши приложения
     'app',
-    'calculator'
+    'calculator',
+    'bus_stations'
 ]
 
 MIDDLEWARE = [
