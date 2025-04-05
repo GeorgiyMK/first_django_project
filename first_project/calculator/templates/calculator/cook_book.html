@@ -12,7 +12,7 @@
         <ul>
         {% for dish, ingredients in cook_book.items %}
             <li>
-                <h2>{{ dish|title }}</h2>
+                <a href="{% url 'dish_detail' dish %}">{{ dish|title }}</a>
                 <ul>
                     {% for name_and_unit, quantity in ingredients.items %}
                         <li>{{ name_and_unit }} — {{ quantity }}</li>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ dish_name|title }}</title>
+</head>
+<body>
+    <h1>{{ dish_name|title }}</h1>
+    <ul>
+        {% for name_and_unit, quantity in ingredients.items %}
+            <li>{{ name_and_unit }} — {{ quantity }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'cook_calculator' %}">← Назад</a>
+</body>
+</html>
