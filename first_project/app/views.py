@@ -16,7 +16,8 @@ def home_view(request):
 
         'Показать текущее время': reverse('time'),
         'Показать содержимое рабочей директории': reverse('workdir'),
-        'Картинка от NASA': reverse('nasa_picture')
+        'Картинка от NASA': reverse('nasa_picture'),
+        'Кулинарный калькулятор' : reverse('cook_calculator')
     }
     
     # context и параметры render менять не нужно

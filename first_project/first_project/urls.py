@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from app.views import home_view, time_view, workdir_view, nasa_picture
+from calculator.views import cook_calculator
 
 urlpatterns = [
     path('', home_view, name='home'),
@@ -26,4 +27,5 @@ urlpatterns = [
     path('current_time/', time_view, name='time'),
     path('workdir/', workdir_view, name='workdir'),
     path('admin/', admin.site.urls),
+    path('cook_calculator/', cook_calculator, name = 'cook_calculator'),
 ]

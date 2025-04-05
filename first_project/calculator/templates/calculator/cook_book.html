@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Кулинарная книга</title>
+</head>
+<body>
+    <h1>Кулинарная книга</h1>
+    <h1>Выберите блюдо для приготовления</h1>
+
+    {% if cook_book %}
+        <ul>
+        {% for dish, ingredients in cook_book.items %}
+            <li>
+                <h2>{{ dish|title }}</h2>
+                <ul>
+                    {% for name_and_unit, quantity in ingredients.items %}
+                        <li>{{ name_and_unit }} — {{ quantity }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Нет данных.</p>
+    {% endif %}
+    <h1>Выберите раздел</h1>
+    {% for title, url in pages.items %}
+        <a href="{{ url }}">{{ title }}</a>
+        <br>
+    {% endfor %}
+</body>
+</html>
