@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<table>
+  <tr>
+    <th>Название</th>
+    <th>Улица</th>
+    <th>Район</th>
+  </tr>
+  {% for station in page %}
+  <tr>
+    <td>{{ station.StationName }}</td>
+    <td>{{ station.Street }}</td>
+    <td>{{ station.District }}</td>
+  </tr>
+  {% endfor %}
 
-</body>
-</html>
+</table>
+{% if page.has_previous %}
+<a href = '?page={{page.previous_page_number}}'> Назад </a>
+{% endif %}
+{% if page.has_next %}
+<a href = '?page={{page.next_page_number}}'> Вперёд </a>
+{% endif %}
+<h1>Выберите раздел</h1>
+    {% for title, url in pages.items %}
+        <a href="{{ url }}">{{ title }}</a>
+        <br>
+    {% endfor %}
